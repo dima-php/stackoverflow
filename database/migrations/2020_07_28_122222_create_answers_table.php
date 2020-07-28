@@ -18,8 +18,7 @@ class CreateAnswersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('question_id')->references('id')->on('question');
             $table->text('body' );
-            $table->integer(' votes_count' );
-            $table->integer(' votes_count' );
+            $table->integer('votes_count' );
             $table->timestamps();
         });
     }
