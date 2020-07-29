@@ -15,8 +15,10 @@ class CreateAnswersTable extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('user_id')->references('id')->on('users');
-            $table->unsignedInteger('question_id')->references('id')->on('question');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedInteger('question_id');
+            $table->foreign('question_id')->references('id')->on('questions');
             $table->text('body');
             $table->integer('votes_count');
             $table->timestamps();
