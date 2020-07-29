@@ -2,12 +2,14 @@
 
 namespace App;
 
+use App\Models\Answer;
+use App\Models\Question;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable {
+
     use Notifiable;
 
     /**
@@ -37,15 +39,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function getAnswers()
+    /**
+     * relation to answer
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function answers()
     {
-        return $this->hasMany('App\Models\Answers');
-
+        return $this->hasMany(Answer::class);
     }
-    public function getQuestion()
-    {
 
-        return $this->hasMany('App\Models\Question');
+    /**
+     * relation to question
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
     }
 
 }
