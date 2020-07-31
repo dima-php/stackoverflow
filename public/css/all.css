@@ -99,3 +99,6 @@
     text-decoration: none;
     background: #c2dff1;
 }
+ul.section-nav.sidebar-nav {
+    padding-left: 0;
+}

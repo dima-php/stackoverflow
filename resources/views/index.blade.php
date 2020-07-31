@@ -1,3 +1,4 @@
+
 @include('header')
 
 
@@ -23,8 +24,8 @@
 
                     </div>
                 </div>
-                <div class="grid ai-center mb16">
-                    <div class="grid--cell fl1 fs-body3"></div>
+                <div class="grid ">
+                    <div class="grid--cell "></div>
                     <div class="grid--cell">
                         <div class=" grid s-btn-group js-filter-btn">
                             <a class="youarehere is-selected grid--cell s-btn s-btn__muted s-btn__outlined" href="#"
@@ -74,13 +75,13 @@
                                         <div class="mini-counts"><span title="2 views">2</span></div>
                                         <div>views</div>
                                     </div>
-
                                 </div>
+
+
                                 <div class="summary">
 
-
                                     <h3>
-                                        <a href="#"
+                                        <a href="/question?id={{'id'}}"
                                            class="question-hyperlink">Laravel eloquent update column using relationship
                                             column</a></h3>
 
@@ -100,10 +101,10 @@
                                                 asked <span title="2020-07-31 07:20:07Z"
                                                             class="relativetime">1 min ago</span> </a>
                                             <a href="#">slayerbleast</a>
-                                            <span class="reputation-score" title="reputation score " dir="ltr">516</span>
+                                            <span class="reputation-score" title="reputation score "
+                                                  dir="ltr">516</span>
                                         </div>
                                     </div>
-
 
 
                                 </div>
@@ -122,20 +123,11 @@
         <div class="col-lg-2">
 
             @include('sidebar')
+
         </div>
     </div>
 </div>
 
 
 @include('footer')
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-        crossorigin="anonymous"></script>
-</body>
-</html>
+

@@ -1,4 +1,4 @@
-
+@section('nav')
     <ul class="navbar-nav mr-auto flex-column">
         <li class="nav-item active">
             <a href="" class="nav-link">О нас</a>
@@ -16,4 +16,4 @@
             <a href="" class="nav-link">Контакты</a>
         </li>
     </ul>
-
+@show
