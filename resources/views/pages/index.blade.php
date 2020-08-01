@@ -1,17 +1,14 @@
 
-@include('header')
+
 
 
 <div class="container-fluid dk-content">
     <div class="row">
         <div class="col-lg-2">
-            @include('nav')
+            @include('includes.nav')
         </div>
         <div class="col-lg-8">
-
             <div id="mainbar">
-
-
                 <div class="grid">
                     <h1 class="grid--cell fl1 fs-headline1">
                         Questions
@@ -21,7 +18,6 @@
                         <a href="#" class="btn btn-outline-success my-2 ">
                             Ask Question
                         </a>
-
                     </div>
                 </div>
                 <div class="grid ">
@@ -76,15 +72,11 @@
                                         <div>views</div>
                                     </div>
                                 </div>
-
-
                                 <div class="summary">
-
                                     <h3>
                                         <a href="/question?id={{'id'}}"
                                            class="question-hyperlink">Laravel eloquent update column using relationship
                                             column</a></h3>
-
                                     <div class="dk-link-question">
                                         <div class="tags t-php t-laravel t-eloquent t-eloquent--relationship">
                                             <a href="#" class="post-tag" title="show questions tagged 'php'"
@@ -122,12 +114,12 @@
         </div>
         <div class="col-lg-2">
 
-            @include('sidebar')
+            @include('includes.sidebar')
 
         </div>
     </div>
 </div>
 
 
-@include('footer')
+
 
