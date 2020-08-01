@@ -97,8 +97,6 @@
                                                   dir="ltr">516</span>
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
 
