@@ -15,11 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('pages.index');
 });
 
-Route::get('/question', function () {
-    return view('question');
+Route::get('/questions', function () {
+    return view('pages.questions.index');
 });
 
 Auth::routes();
