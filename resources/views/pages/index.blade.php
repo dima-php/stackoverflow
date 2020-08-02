@@ -1,7 +1,4 @@
-
-
-
-
+@extends('layouts.app')
 <div class="container-fluid dk-content">
     <div class="row">
         <div class="col-lg-2">
@@ -11,10 +8,11 @@
             <div id="mainbar">
                 <div class="grid">
                     <h1 class="grid--cell fl1 fs-headline1">
-                        Questions
+                        <a href="">
+                            Top Questions
+                        </a>
                     </h1>
                     <div class="ml12 aside-cta grid--cell print:d-none">
-
                         <a href="#" class="btn btn-outline-success my-2 ">
                             Ask Question
                         </a>
@@ -45,28 +43,22 @@
                                data-shortcut="M">
                                 Month</a>
                         </div>
-
                     </div>
                 </div>
-
-
                 <div id="qlist-wrapper" class="flush-left">
                     <div id="question-mini-list">
                         <div>
                             <hr>
                             <div class="question-summary narrow" id="question-summary-63187429">
-
                                 <div class="cp">
                                     <div class="votes">
                                         <div class="mini-counts"><span title="0 votes">0</span></div>
                                         <div>votes</div>
                                     </div>
-
                                     <div class="answers">
                                         <div class="mini-counts"><span title="0 answers">0</span></div>
                                         <div>answers</div>
                                     </div>
-
                                     <div class="views">
                                         <div class="mini-counts"><span title="2 views">2</span></div>
                                         <div>views</div>
@@ -74,13 +66,13 @@
                                 </div>
                                 <div class="summary">
                                     <h3>
-                                        <a href="/question?id={{'id'}}"
+                                        <a href=""
                                            class="question-hyperlink">Laravel eloquent update column using relationship
                                             column</a></h3>
                                     <div class="dk-link-question">
                                         <div class="tags t-php t-laravel t-eloquent t-eloquent--relationship">
                                             <a href="#" class="post-tag" title="show questions tagged 'php'"
-                                               rel="tag">php</a> <a href="/questions/tagged/laravel" class="post-tag"
+                                               rel="tag">php</a> <a href="" class="post-tag"
                                                                     title="show questions tagged 'laravel'" rel="tag">laravel</a>
                                             <a href="#" class="post-tag"
                                                title="show questions tagged 'eloquent'" rel="tag">eloquent</a> <a
@@ -90,11 +82,8 @@
                                         <div class="started">
                                             <a href="#"
                                                class="started-link">
-                                                asked <span title="2020-07-31 07:20:07Z"
-                                                            class="relativetime">1 min ago</span> </a>
-                                            <a href="#">slayerbleast</a>
-                                            <span class="reputation-score" title="reputation score "
-                                                  dir="ltr">516</span>
+                                                asked <span class="relativetime">1 min ago</span> </a> <a href="#">slayerbleast</a>
+                                            <span class="reputation-score" title="reputation score " dir="ltr">516</span>
                                         </div>
                                     </div>
                                 </div>
@@ -102,16 +91,10 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
-
-
         </div>
         <div class="col-lg-2">
-
             @include('includes.sidebar')
-
         </div>
     </div>
 </div>

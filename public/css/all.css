@@ -1,5 +1,13 @@
+* {
+    font-family: Arial sans-serif;
+}
+
 .dk-content {
     padding-top: 6%;
+}
+
+.navbar-brand {
+    font-size: 30px;
 }
 
 .dk-sidebar-nav {
@@ -41,7 +49,7 @@
     justify-content: center;
 }
 
-.question-summary  {
+.question-summary {
     display: flex;
     padding: 12px;
 }
@@ -57,20 +65,29 @@
 .votes {
     text-align: center;
 }
-.answers {text-align: center;}
-.views {text-align: center;}
+
+.answers {
+    text-align: center;
+}
+
+.views {
+    text-align: center;
+}
 
 .grid {
     display: flex;
     justify-content: space-between;
 }
+
 .s-btn__outlined {
     margin-left: 7px;
 }
+
 .question-hyperlink {
     font-size: 19px;
     font-weight: 400;
 }
+
 .summary {
     width: 80%;
 
@@ -80,6 +97,7 @@
     display: flex;
     justify-content: space-between;
 }
+
 .post-tag {
     display: inline-block;
     padding: .4em .5em;
@@ -93,12 +111,91 @@
     border-style: solid;
     border-radius: 3px;
     background: #e1ecf4;
-    text-decoration: none;
 }
+
 .post-tag:hover {
     text-decoration: none;
     background: #c2dff1;
 }
+
 ul.section-nav.sidebar-nav {
     padding-left: 0;
+}
+
+.wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+.show-content {
+    padding-top: 8%;
+}
+
+.user-name {
+    font-size: 12px;
+}
+
+.started-link {
+    font-size: 11px;
+}
+
+footer {
+    background: rgba(5, 2, 2, 0.4);
+}
+
+.show-title {
+    color: #3c4146;
+}
+
+.user-info {
+    box-sizing: border-box;
+    padding: 5px 6px 7px 7px;
+    color: var(--black-500);
+}
+
+.dk-question {
+    padding-top: 5%;
+}
+
+.dk-question p {
+
+}
+
+.dk-data {
+    padding-top: 2%;
+    display: flex;
+    justify-content: space-between;
+}
+
+textarea {
+    display: block;
+    padding: 10px;
+    line-height: 1.3;
+    width: 90%;
+    margin: 0 auto;
+    font-size: 14px;
+    height: 270px;
+    border: 1px solid #3c4146;
+    margin-bottom: 3%;
+}
+
+.form-answer {
+    height: 10%;
+}
+
+.button-form {
+    margin-left: 5%;
+}
+
+.form-answer h3 {
+    margin-left: 5%;
+}
+
+.answer-user {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.avatar {
+    max-width: 32px;
 }
