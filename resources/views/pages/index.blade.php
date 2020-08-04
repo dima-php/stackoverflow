@@ -1,4 +1,6 @@
 @extends('layouts.app')
+
+@section('content')
 <div class="container-fluid dk-content">
     <div class="row">
         <div class="col-lg-2">
@@ -100,5 +102,5 @@
 </div>
 
 
-
+@endsection
 

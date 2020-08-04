@@ -10,7 +10,7 @@ use Faker\Generator as Faker;
 $factory->define(Question::class, function (Faker $faker) {
     return [
         'title' => $faker->sentence,
-        'body' => $faker->text(rand(100, 500)),
+        'body' => $faker->text(rand(100, 1000)),
         'views'=>rand(0, 200),
         'answers'=>rand(0, 200),
         'votes'=>rand(0, 200),

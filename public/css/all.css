@@ -181,6 +181,7 @@ textarea {
 
 .form-answer {
     height: 10%;
+    background: url("../img/img.png") no-repeat right bottom / cover;
 }
 
 .button-form {

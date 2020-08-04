@@ -1,6 +1,9 @@
 @extends('layouts.app')
 <title>{{$question->title}}</title>
 @section('content')
+    <div class="container-fluid">
+
+
     <div class="row show-content">
         <div class="col-lg-2">
             @include('includes.nav')
@@ -40,26 +43,32 @@
                 </div>
             </div>
             <div class="dk-show-answer">
+                @foreach($question->answers as $answer)
                 <div class="answer">
                     <hr>
                     <p>
-                        Aut ducimus ut enim. Voluptates dolor sed unde iusto id. Nesciunt illum ab ab alias.
+
+                        {{$answer->body}}
                     </p>
                     <div class="dk-data">
-                        {{$question->created_at}}
+                        {{$answer->created_at}}
                         <div class="user-info">
                             <img class="avatar"
                                  src="https://i.stack.imgur.com/50iHw.jpg?s=128&g=1"
                                  alt="avatar">
-                            <a href="">{{$question->user->name}}</a>
+                            <a href="">{{$answer->user->name}}</a>
+
                         </div>
                     </div>
                 </div>
+                @endforeach
+
             </div>
             <hr>
             <div class="form-answer">
                 <h3>Your Answer</h3>
                 <form action="" method="get">
+                    {{ csrf_field() }}
                     <textarea name="answer" id="answer" placeholder="Text answer"></textarea>
                     <button type="submit" class="btn btn-outline-success my-2 my-sm-0 button-form">Post Your Answer
                     </button>
@@ -69,6 +78,7 @@
         <div class="col-lg-2">
             @include('includes.sidebar')
         </div>
+    </div>
     </div>
 @endsection
 

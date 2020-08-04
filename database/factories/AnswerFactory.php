@@ -9,7 +9,7 @@ $factory->define(Answer::class, function (Faker $faker) {
     return [
         'user_id' => \App\User::all()->random()->id,
         'question_id' => \App\Models\Question::all()->random()->id,
-        'body' => $faker->text(rand(50, 200)),
+        'body' => $faker->text(rand(50, 300)),
         'votes_count' => rand(0, 200),
     ];
 });

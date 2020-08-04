@@ -77,10 +77,7 @@
                                                 <div class="wrap">
                                                     <div class="tags t-php t-laravel t-eloquent t-eloquent--relationship">
                                                         <a href="#" class="post-tag" title="show questions tagged 'php'"
-                                                           rel="tag">php</a> <a href=""
-                                                                                class="post-tag"
-                                                                                title="show questions tagged 'laravel'"
-                                                                                rel="tag">laravel</a>
+                                                           rel="tag">php</a> <a href="" class="post-tag"  title= rel="tag">laravel</a>
                                                         <a href="#" class="post-tag"
                                                            title="show questions tagged 'eloquent'"
                                                            rel="tag">eloquent</a>
