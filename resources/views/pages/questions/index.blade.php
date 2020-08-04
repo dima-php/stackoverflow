@@ -60,7 +60,7 @@
                                                 </div>
                                                 <div class="answers">
                                                     <div class="mini-counts"><span
-                                                            title="0 answers">{{$question->answers}}</span></div>
+                                                            title="0 answers">{{$question->answer_count}}</span></div>
                                                     <div>answers</div>
                                                 </div>
                                                 <div class="views">
@@ -72,12 +72,14 @@
                                             <div class="summary">
                                                 <h3>
                                                     <a href="{{route('questions.show', $question->slug)}}">{{$question->title}}</a>
-                                                    <div class="dk-link-question">
+                                                    <div class="dk-link-question"></div>
                                                 </h3>
                                                 <div class="wrap">
-                                                    <div class="tags t-php t-laravel t-eloquent t-eloquent--relationship">
+                                                    <div
+                                                        class="tags t-php t-laravel t-eloquent t-eloquent--relationship">
                                                         <a href="#" class="post-tag" title="show questions tagged 'php'"
-                                                           rel="tag">php</a> <a href="" class="post-tag"  title= rel="tag">laravel</a>
+                                                           rel="tag">php</a> <a href="" class="post-tag"
+                                                                                title=rel="tag">laravel</a>
                                                         <a href="#" class="post-tag"
                                                            title="show questions tagged 'eloquent'"
                                                            rel="tag">eloquent</a>
@@ -88,12 +90,12 @@
                                                     <div class="started">
                                                         <a href="#"
                                                            class="started-link">
-                                                            date <span title="2020-07-31 07:20:07Z"
-                                                                       class="relativetime">{{$question->created_at}}</span>
+                                                            <span title="2020-07-31 07:20:07Z"
+                                                                  class="relativetime">{{$question->created_date}}</span>
                                                         </a>
                                                         <a href="#" class="user-name">{{$question->user->name}}</a>
                                                         <span class="reputation-score" title="reputation score "
-                                                              dir="ltr">{{$question->user_id}}</span>
+                                                              dir="ltr">{{$question->user->questions->count()}}</span>
                                                     </div>
                                                 </div>
                                             </div>

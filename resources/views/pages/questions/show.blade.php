@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <p class="answer-user">
-                        {{$question->answers}} Answer
+                        {{$question->answer_count}} Answer
                     </p>
                 </div>
             </div>

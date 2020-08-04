@@ -24,6 +24,11 @@ class Question extends Model
         return 'slug';
     }
 
+    public function getCreatedDateAttribute()
+    {
+        return $this->created_at->diffForHumans();
+    }
+
     public function answers()
     {
         return $this->hasMany(Answer::class);
