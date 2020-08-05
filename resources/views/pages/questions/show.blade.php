@@ -7,6 +7,15 @@
             @include('includes.nav')
         </div>
         <div class="col-lg-8 ">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             <div class="dk-wrap-question">
                 <h2 class="show-title">{{$question->title}}</h2>
                 <div class="dk-question">
@@ -53,15 +62,6 @@
             </div>
             <hr>
             <div class="form-answer">
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
                 <h3>Your Answer</h3>
                 <form action="{{route('answers.store')}}" method="post">
                     {{csrf_field()}}

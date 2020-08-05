@@ -1,5 +1,4 @@
 <?php
-
 use App\Models\Answer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
