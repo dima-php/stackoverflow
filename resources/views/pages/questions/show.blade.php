@@ -2,8 +2,6 @@
 <title>{{$question->title}}</title>
 @section('content')
     <div class="container-fluid">
-
-
     <div class="row show-content">
         <div class="col-lg-2">
             @include('includes.nav')
@@ -16,17 +14,9 @@
                         {{$question->body}}
                     </p>
                     <div class="tags t-php t-laravel t-eloquent t-eloquent--relationship">
-                        <a href="#" class="post-tag" title="show questions tagged 'php'"
-                           rel="tag">php</a> <a href=""
-                                                class="post-tag"
-                                                title="show questions tagged 'laravel'"
-                                                rel="tag">laravel</a>
-                        <a href="#" class="post-tag"
-                           title="show questions tagged 'eloquent'"
-                           rel="tag">eloquent</a>
-                        <a
-                            href="#" class="post-tag" title=""
-                            rel="tag">eloquent--relationship</a>
+                        <a href="#" class="post-tag" title="show questions tagged 'php'" rel="tag">php</a> <a href="" class="post-tag" title="show questions tagged 'laravel'" rel="tag">laravel</a>
+                        <a href="#" class="post-tag" title="show questions tagged 'eloquent'" rel="tag">eloquent</a>
+                        <a href="#" class="post-tag" rel="tag">eloquent--relationship</a>
                     </div>
                     <div class="dk-data">
                         {{$question->created_at}}
@@ -47,7 +37,6 @@
                 <div class="answer">
                     <hr>
                     <p>
-
                         {{$answer->body}}
                     </p>
                     <div class="dk-data">
@@ -57,22 +46,32 @@
                                  src="https://i.stack.imgur.com/50iHw.jpg?s=128&g=1"
                                  alt="avatar">
                             <a href="">{{$answer->user->name}}</a>
-
                         </div>
                     </div>
                 </div>
                 @endforeach
-
             </div>
             <hr>
             <div class="form-answer">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <h3>Your Answer</h3>
-                <form action="" method="get">
-                    {{ csrf_field() }}
-                    <textarea name="answer" id="answer" placeholder="Text answer"></textarea>
+                <form action="{{route('answers.store')}}" method="post">
+                    {{csrf_field()}}
+                    <input value="{{$question->id}}" name="question_id" type="hidden">
+                    <input value="null" name="votes_count" type="hidden">
+                    <textarea name="body"  placeholder="Text answer"></textarea>
                     <button type="submit" class="btn btn-outline-success my-2 my-sm-0 button-form">Post Your Answer
                     </button>
                 </form>
+
             </div>
         </div>
         <div class="col-lg-2">

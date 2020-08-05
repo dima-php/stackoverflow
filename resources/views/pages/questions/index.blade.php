@@ -12,7 +12,7 @@
                             Questions
                         </h1>
                         <div class="ml12 aside-cta grid--cell print:d-none">
-                            <a href="#" class="btn btn-outline-success my-2 ">
+                            <a href="{{route("questions.create")}}" class="btn btn-outline-success my-2 ">
                                 Ask Question
                             </a>
                         </div>
@@ -58,8 +58,11 @@
                                                             title="0 votes">{{$question->votes}}</span></div>
                                                     <div>votes</div>
                                                 </div>
-                                                <div class="answers">
-                                                    <div class="mini-counts"><span
+                                                <div class="answers"
+                                                     @if($question->answer_count > 0)
+                                                style="background-color: #5eba7d; color: #fff;"
+                                                    @endif >
+                                                    <div class="mini-counts"  ><span
                                                             title="0 answers">{{$question->answer_count}}</span></div>
                                                     <div>answers</div>
                                                 </div>

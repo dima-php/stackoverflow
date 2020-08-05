@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Answer;
 use App\Models\Question;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -30,7 +32,7 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.questions.create');
     }
 
     /**
@@ -41,8 +43,21 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'title' => 'required|unique:posts|max:255',
+            'body' => 'required',
+        ]);
+
+
+        $question = new Question;
+        $question->user_id = Auth::id();
+        $question->title = $request->title;
+        $question->body = $request->body;
+        $question->save();
+        return redirect()->route('questions.index');
+
     }
+
 
     /**
      * Display the specified resource.

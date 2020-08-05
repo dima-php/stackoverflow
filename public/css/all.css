@@ -68,6 +68,8 @@
 
 .answers {
     text-align: center;
+    padding: 2px;
+    border-radius: 3px;
 }
 
 .views {
@@ -199,4 +201,7 @@ textarea {
 
 .avatar {
     max-width: 32px;
+}
+.dk-question-form {
+    padding: 8% 0;
 }
