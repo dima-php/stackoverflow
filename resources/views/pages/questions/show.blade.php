@@ -63,7 +63,7 @@
             <hr>
             <div class="form-answer">
                 <h3>Your Answer</h3>
-                <form action="{{route('answers.store')}}" method="post">
+                <form action="{{route('answers.store', $question->slug)}}" method="post">
                     {{csrf_field()}}
                     <input value="{{$question->id}}" name="question_id" type="hidden">
                     <input value="null" name="votes_count" type="hidden">
@@ -72,6 +72,11 @@
                     </button>
                 </form>
 
+            </div>
+            <div class="sidebar-nav">
+                <div class="item">
+
+                </div>
             </div>
         </div>
         <div class="col-lg-2">

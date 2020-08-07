@@ -11,7 +11,11 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.styles([
-    'public/css/vendor/normalize.css',
-    'public/css/vendor/videojs.css'
-], 'public/css/all.css');
+// mix.styles([
+//     'public/css/vendor/normalize.css',
+//     'public/css/vendor/videojs.css'
+// ], 'public/css/all.css');
+
+
+mix.js('resources/js/app.js', 'public/js')
+    .sass('resources/sass/main.scss', 'public/css');

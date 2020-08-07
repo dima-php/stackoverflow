@@ -20,7 +20,7 @@ class CreateAnswersTable extends Migration
             $table->unsignedInteger('question_id');
             $table->foreign('question_id')->references('id')->on('questions');
             $table->text('body');
-            $table->integer('votes_count');
+            $table->integer('votes_count')->default(0);
             $table->timestamps();
         });
     }
