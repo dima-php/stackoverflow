@@ -23,8 +23,19 @@
                         <label for="exampleInputPassword1">body</label>
                         <textarea name="body"  class="form-control" placeholder="Text"></textarea>
                     </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                        </div>
+                        <select class="custom-select" multiple name="categories[]">
+                          @foreach($categories as $category)
+                            <option value="{{$category->id}}">{{$category->title}}</option>
+                         @endforeach
+                        </select>
+                    </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
+
                 </div>
             </div>
         </div>

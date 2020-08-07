@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Answer;
+use App\Models\Category;
 use App\Models\Question;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
@@ -32,7 +33,8 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        return view('pages.questions.create');
+        $categories = Category::all();
+        return view('pages.questions.create', ['categories'=>$categories]);
     }
 
     /**
@@ -43,8 +45,10 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $validateData = $request->validate([
-            'title' => 'required|unique:posts|max:255',
+            'title' => 'required',
             'body' => 'required',
         ]);
 
@@ -54,6 +58,7 @@ class QuestionController extends Controller
         $question->title = $request->title;
         $question->body = $request->body;
         $question->save();
+        $question->categories()->attach($request->categories);
         return redirect()->route('questions.index');
 
     }

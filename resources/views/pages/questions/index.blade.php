@@ -60,9 +60,9 @@
                                                 </div>
                                                 <div class="answers"
                                                      @if($question->answer_count > 0)
-                                                style="background-color: #5eba7d; color: #fff;"
+                                                     style="background-color: #5eba7d; color: #fff;"
                                                     @endif >
-                                                    <div class="mini-counts"  ><span
+                                                    <div class="mini-counts"><span
                                                             title="0 answers">{{$question->answer_count}}</span></div>
                                                     <div>answers</div>
                                                 </div>
@@ -78,17 +78,11 @@
                                                     <div class="dk-link-question"></div>
                                                 </h3>
                                                 <div class="wrap">
-                                                    <div
-                                                        class="tags t-php t-laravel t-eloquent t-eloquent--relationship">
-                                                        <a href="#" class="post-tag" title="show questions tagged 'php'"
-                                                           rel="tag">php</a> <a href="" class="post-tag"
-                                                                                title=rel="tag">laravel</a>
-                                                        <a href="#" class="post-tag"
-                                                           title="show questions tagged 'eloquent'"
-                                                           rel="tag">eloquent</a>
-                                                        <a
-                                                            href="#" class="post-tag" title=""
-                                                            rel="tag">eloquent--relationship</a>
+                                                    <div class="tags t-php t-laravel t-eloquent t-eloquent--relationship">
+
+                                                        @foreach($questions->categories as $category)
+                                                            <a href="#" class="post-tag" >{{$category->title}}</a>
+                                                        @endforeach
                                                     </div>
                                                     <div class="started">
                                                         <a href="#"
