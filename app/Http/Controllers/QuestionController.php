@@ -22,7 +22,6 @@ class QuestionController extends Controller
     public function index()
     {
         $questions = Question::with('user')->latest()->paginate(10);
-
         return view('pages.questions.index', ['questions' => $questions]);
     }
 
@@ -52,11 +51,10 @@ class QuestionController extends Controller
             'body' => 'required',
         ]);
 
-
         $question = new Question;
         $question->user_id = Auth::id();
-        $question->title = $request->title;
-        $question->body = $request->body;
+        $question->title = $validateData['title'];
+        $question->body = $validateData['body'];
         $question->save();
         $question->categories()->attach($request->categories);
         return redirect()->route('questions.index');

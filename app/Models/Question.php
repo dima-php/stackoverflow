@@ -3,10 +3,13 @@
 namespace App\Models;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class Question extends Model
 {
+
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -37,5 +40,10 @@ class Question extends Model
     {
         return $this->belongsToMany(Category::class);
     }
+
+
+
+
+
 }
 

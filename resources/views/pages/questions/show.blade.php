@@ -23,7 +23,7 @@
                             {{$question->body}}
                         </p>
                         <div class="tags t-php t-laravel t-eloquent t-eloquent--relationship">
-                            @foreach($questions->categories as $category)
+                            @foreach($question->categories as $category)
                                 <a href="#" class="post-tag" rel="tag">{{$category->title}}</a>
                             @endforeach
 
