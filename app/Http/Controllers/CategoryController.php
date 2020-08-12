@@ -13,11 +13,9 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index(Category $categories)
+    public function index()
     {
-        $categories = Category::all();
-        dd($categories);
-        return view('pages.index', ['categories' => $categories]);
+
     }
 
     /**
