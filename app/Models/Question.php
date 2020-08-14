@@ -36,6 +36,7 @@ class Question extends Model
     {
         return $this->hasMany(Answer::class);
     }
+
     public function categories()
     {
         return $this->belongsToMany(Category::class);

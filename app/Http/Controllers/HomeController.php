@@ -20,16 +20,16 @@ class HomeController extends Controller
     }
 
 
-
     /**
      * Show the application dashboard.
      *
+     * @param Question $question
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(Question $question)
     {
-//        $categories = Category::all();
-        $questions = Question::orderBy('views', 'desc')->take(10)->get();
+        $questions = Question::with('categories')->orderBy('views', 'desc')->take(10)->get();
+
         return view('pages.index', ['questions' => $questions]);
     }
 

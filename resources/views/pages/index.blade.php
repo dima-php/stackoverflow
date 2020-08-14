@@ -10,9 +10,9 @@
             <div id="mainbar">
                 <div class="grid">
                     <h1 class="grid--cell fl1 fs-headline1">
-                    
+
                             Top Questions
-                   
+
                     </h1>
                     <div class="ml12 aside-cta grid--cell print:d-none">
                         <a href="{{route("questions.create")}}" class="btn btn-outline-success my-2 ">
@@ -82,20 +82,20 @@
                                         <div class="wrap">
                                             <div class="tags t-php t-laravel t-eloquent t-eloquent--relationship">
 
-                                                {{-- @foreach($question->categories as $category)
+                                                @foreach($question->categories as $category)
                                                     <a href="#" class="post-tag" >{{$category->title}}</a>
-                                                @endforeach --}}
+                                                @endforeach
                                             </div>
-{{--                                           <div class="started">--}}
-{{--                                                <a href="#"--}}
-{{--                                                   class="started-link">--}}
-{{--                                                            <span title="2020-07-31 07:20:07Z"--}}
-{{--                                                                  class="relativetime">{{$question->created_date}}</span>--}}
-{{--                                                </a>--}}
-                                               {{-- <a href="#" class="user-name">{{$question->user->name}}</a> --}}
-{{--                                                <span class="reputation-score" title="reputation score "--}}
-{{--                                                      dir="ltr">{{$question->user->questions->count()}}</span>--}}
-{{--                                            </div>--}}
+                                           <div class="started">
+                                                <a href="#"
+                                                   class="started-link">
+                                                            <span title="2020-07-31 07:20:07Z"
+                                                                  class="relativetime">{{$question->created_date}}</span>
+                                                </a>
+                                                <a href="#" class="user-name">{{$question->user->name}}</a>
+                                                <span class="reputation-score" title="reputation score "
+                                                      dir="ltr">{{$question->user->questions->count()}}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

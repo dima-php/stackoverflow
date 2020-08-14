@@ -2,10 +2,11 @@
 
 use App\Models\Answer;
 use App\Models\Question;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
-class QuestionsTableSeeder extends Seeder
-{
+class QuestionsTableSeeder extends Seeder {
+
     /**
      * Run the database seeds.
      *
@@ -13,10 +14,18 @@ class QuestionsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Question::class, 50)->create()->each(function ($question){
-            $count = rand(1,5);
+        factory(Question::class, 50)->create()->each(function ($question) {
+            $count = rand(1, 5);
             $question->answer_count = $count;
             $question->save();
+
+            $categoriesAll = Category::all();
+
+            $categories = $categoriesAll->random(rand(1,4));
+
+            foreach ($categories as $category) {
+                $question->categories()->attach($category->id);
+            }
 
             factory(Answer::class, $count)->create(['question_id' => $question->id]);
         });
