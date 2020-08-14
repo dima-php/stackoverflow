@@ -27,7 +27,8 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(Question $question)
-    {  $categories = Category::all();
+    {
+//        $categories = Category::all();
         $questions = DB::table('questions')->orderBy('views', 'desc')->limit(10)->get();
         return view('pages.index', ['questions' => $questions]);
     }
