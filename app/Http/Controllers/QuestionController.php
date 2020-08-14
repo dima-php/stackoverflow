@@ -44,8 +44,6 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-
-
         $validateData = $request->validate([
             'title' => 'required',
             'body' => 'required',
