@@ -29,7 +29,7 @@ class HomeController extends Controller
     public function index(Question $question)
     {
 //        $categories = Category::all();
-        $questions = DB::table('questions')->orderBy('views', 'desc')->limit(10)->get();
+        $questions = Question::orderBy('views', 'desc')->take(10)->get();
         return view('pages.index', ['questions' => $questions]);
     }
 
