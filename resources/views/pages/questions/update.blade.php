@@ -8,7 +8,7 @@
                 @csrf
                 @foreach($question as $question)
 
-                    <input type="hidden" name="id"  value="{{$question->id}}>
+                    <input type="hidden" name="id"  value="{{$question->id}}">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Title</label>
 

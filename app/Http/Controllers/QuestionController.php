@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Question;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -81,9 +82,9 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        $question = Question::all()->where('slug','=', $id);
+        $question = Question::all()->where('slug', '=', $id);
 
-        return view('pages.questions.update',['question' => $question]);
+        return view('pages.questions.update', ['question' => $question]);
     }
 
     /**
@@ -93,21 +94,17 @@ class QuestionController extends Controller
      * @param int $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-//        $validateData = $request->validate([
-//            'title' => 'required',
-//            'body' => 'required',
-//        ]);
 
-        $question = Question::all()->where('slug','=', $id)->update([
-        'title' => $request->title,
-        'body' => $request->body,
-        'updated_at' => Carbon::now()
-    ]);
-     $question->categories()->attach($request->categories);
-        return redirect()->route('questions.show');
-
+        $id = $request->id;
+        $question = DB::table('questions')
+            ->where('id', '=', $id)
+            ->update([
+                'title' => $request->title,
+                'body' => $request->body,
+            ]);
+        return redirect()->route('questions.index');
     }
 
     /**
