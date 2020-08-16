@@ -202,10 +202,18 @@ textarea {
 .avatar {
     max-width: 32px;
 }
+
 .dk-question-form {
     padding: 8% 0;
 }
+
 .card {
     margin-top: 19%;
     margin-bottom: 11%;
+}
+
+
+.dk-box_control {
+    display: flex;
+    justify-content: flex-end;
 }

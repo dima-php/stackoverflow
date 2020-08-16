@@ -18,43 +18,42 @@
                 @endif
                 <div class="dk-wrap-question">
                     <h2 class="show-title">{{$question->title}}</h2>
+                    <div class="dk-box_control">
+                        @if(\Illuminate\Support\Facades\Auth::user() != null)
+                            @php
+                                $user = \Illuminate\Support\Facades\Auth::user();
+                                $questions = $user->questions;
+                                $questionsIds = $questions->pluck('id')->toArray();
+                            @endphp
+                            @if(in_array($question->id, $questionsIds))
+                                <a href="{{route('questions.edit', $question)}}" class="btn btn-warning">Edit</a>
 
-                    @if(\Illuminate\Support\Facades\Auth::user() != null)
-                        @php
-                            $user = \Illuminate\Support\Facades\Auth::user();
-                            $questions = $user->questions;
-                            $questionsIds = $questions->pluck('id')->toArray();
-                        @endphp
-
-                        @if(in_array($question->id, $questionsIds))
-                            <button class="btn btn-warning">Edit</button>
-                            <button class="btn btn-danger">Delete</button>
+                                <a class="btn btn-danger" href="#" >Delete</a>
+                            @endif
                         @endif
-                    @endif
-
-                        <div class="dk-question">
-                            <p>
-                                {{$question->body}}
-                            </p>
-                            <div class="tags t-php t-laravel t-eloquent t-eloquent--relationship">
-                                @foreach($question->categories as $category)
-                                    <a href="#" class="post-tag" rel="tag">{{$category->title}}</a>
-                                @endforeach
-
-                            </div>
-                            <div class="dk-data">
-                                {{$question->created_at}}
-                                <div class="user-info">
-                                    <img class="avatar"
-                                         src="https://www.gravatar.com/avatar/78e1bb7e40e3bfdfc592988b65ec29c4?s=32&d=identicon&r=PG&f=1"
-                                         alt="avatar">
-                                    <a href="">{{$question->user->name}}</a>
-                                </div>
-                            </div>
-                            <p class="answer-user">
-                                {{$question->answer_count}} Answer
-                            </p>
+                    </div>
+                    <div class="dk-question">
+                        <p>
+                            {{$question->body}}
+                        </p>
+                        <div class="tags t-php t-laravel t-eloquent t-eloquent--relationship">
+                            @foreach($question->categories as $category)
+                                <a href="#" class="post-tag" rel="tag">{{$category->title}}</a>
+                            @endforeach
                         </div>
+                        <div class="dk-data">
+                            {{$question->created_at}}
+                            <div class="user-info">
+                                <img class="avatar"
+                                     src="https://www.gravatar.com/avatar/78e1bb7e40e3bfdfc592988b65ec29c4?s=32&d=identicon&r=PG&f=1"
+                                     alt="avatar">
+                                <a href="">{{$question->user->name}}</a>
+                            </div>
+                        </div>
+                        <p class="answer-user">
+                            {{$question->answer_count}} Answer
+                        </p>
+                    </div>
                 </div>
                 <div class="dk-show-answer">
                     @foreach($question->answers as $answer)
