@@ -103,7 +103,9 @@ class QuestionController extends Controller
             ->update([
                 'title' => $request->title,
                 'body' => $request->body,
+
             ]);
+//        $question->categories()->attach($request->categories);
         return redirect()->route('questions.index');
     }
 
@@ -115,6 +117,11 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $question = Question::all()->where('slug','=>',$id );
+        if ($question != null) {
+            $question->Delete();
+        }
+
+        return redirect()->route('questions.index');
     }
 }

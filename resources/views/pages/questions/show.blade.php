@@ -28,7 +28,7 @@
                             @if(in_array($question->id, $questionsIds))
                                 <a href="{{route('questions.edit', $question)}}" class="btn btn-warning">Edit</a>
 
-                                <a class="btn btn-danger" href="#" >Delete</a>
+                                <a class="btn btn-danger" href="{{route('questions.delete', $question)}}" >Delete</a>
                             @endif
                         @endif
                     </div>
