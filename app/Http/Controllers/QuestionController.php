@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Exception;
 use App\Models\Category;
 use App\Models\Question;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -50,6 +49,7 @@ class QuestionController extends Controller
         $validateData = $request->validate([
             'title' => 'required',
             'body' => 'required',
+            'categories' => 'array',
         ]);
 
         $question = Question::create($validateData);
