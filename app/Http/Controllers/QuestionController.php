@@ -98,11 +98,16 @@ class QuestionController extends Controller
     {
 
         $id = $request->id;
+        $validateData = $request->validate([
+            'title' => 'required',
+            'body' => 'required',
+        ]);
+        
         $question = DB::table('questions')
             ->where('id', '=', $id)
             ->update([
-                'title' => $request->title,
-                'body' => $request->body,
+                'title' => $validateData['title'],
+                'body' => $validateData['body'],
 
             ]);
 //        $question->categories()->attach($request->categories);
@@ -117,7 +122,7 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
-        $question = Question::all()->where('slug','=>',$id );
+        $question = Question::find($id);
         if ($question != null) {
             $question->Delete();
         }
