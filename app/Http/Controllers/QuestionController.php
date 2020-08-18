@@ -52,11 +52,8 @@ class QuestionController extends Controller
             'body' => 'required',
         ]);
 
-        $question = new Question;
-        $question->user_id = Auth::id();
-        $question->title = $validateData['title'];
-        $question->body = $validateData['body'];
-        $question->save();
+        $question = Question::create($validateData);
+
         $question->categories()->attach($request->categories);
 
         return redirect()->route('questions.index');
