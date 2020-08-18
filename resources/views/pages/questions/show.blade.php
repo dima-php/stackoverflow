@@ -28,9 +28,11 @@
                             @if(in_array($question->id, $questionsIds))
                                 <a href="{{route('questions.edit', $question)}}" class="btn btn-warning">Edit</a>
 
-
-
-   <a class="btn btn-danger" href="{{route('questions.delete', $question)}}" >Delete</a>
+                                <form action="{{route('questions.delete', $question->slug)}}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
                             @endif
                         @endif
                     </div>

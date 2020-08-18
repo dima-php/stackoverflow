@@ -1,16 +1,15 @@
 <?php
 
 namespace App\Models;
+
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class Question extends Model
-{
+class Question extends Model {
 
-
-
+    protected $fillable = ['title', 'body'];
 
     public function user()
     {
@@ -43,10 +42,5 @@ class Question extends Model
     {
         return $this->belongsToMany(Category::class);
     }
-
-
-
-
-
 }
 

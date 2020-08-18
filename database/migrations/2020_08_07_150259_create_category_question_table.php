@@ -16,9 +16,9 @@ class CreateCategoryQuestionTable extends Migration
         Schema::create('category_question', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('question_id');
-            $table->foreign('question_id')->references('id')->on('questions');
+            $table->foreign('question_id')->references('id')->on('questions')->cascadeOnDelete();
             $table->unsignedInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories')->cascadeOnDelete();
             $table->timestamps();
 
         });

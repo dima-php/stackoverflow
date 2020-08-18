@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Answer;
+use Exception;
 use App\Models\Category;
 use App\Models\Question;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\Foundation\Application;
 
@@ -23,18 +22,20 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = Question::with('user')->latest()->paginate(10);
+        $questions = Question::with(['user', 'categories', 'user.questions'])->latest()->paginate(10);
+
         return view('pages.questions.index', ['questions' => $questions]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return Application|Factory|Response|View
      */
     public function create()
     {
         $categories = Category::all();
+
         return view('pages.questions.create', ['categories' => $categories]);
     }
 
@@ -42,7 +43,7 @@ class QuestionController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return Response
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {
@@ -57,75 +58,67 @@ class QuestionController extends Controller
         $question->body = $validateData['body'];
         $question->save();
         $question->categories()->attach($request->categories);
-        return redirect()->route('questions.index');
 
+        return redirect()->route('questions.index');
     }
 
 
     /**
      * Display the specified resource.
      *
-     * @param int $id
-     * @return Response
+     * @param Question $question
+     * @return Application|Factory|Response|View
      */
     public function show(Question $question)
     {
         return view('pages.questions.show', ['question' => $question]);
-
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
-     * @return Response
+     * @param Question $question
+     * @return Application|Factory|Response|View
      */
-    public function edit($id)
+    public function edit(Question $question)
     {
-        $question = Question::all()->where('slug', '=', $id);
-
         return view('pages.questions.update', ['question' => $question]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param int $id
-     * @return Response
+     * @param Request  $request
+     * @param Question $question
+     * @return RedirectResponse
      */
-    public function update(Request $request)
+    public function update(Request $request, Question $question)
     {
-
-        $id = $request->id;
         $validateData = $request->validate([
             'title' => 'required',
             'body' => 'required',
+            'categories' => 'array',
         ]);
-        
-        $question = DB::table('questions')
-            ->where('id', '=', $id)
-            ->update([
-                'title' => $validateData['title'],
-                'body' => $validateData['body'],
 
-            ]);
-//        $question->categories()->attach($request->categories);
+        $question->update($validateData);
+
+        $question->categories()->detach();
+
+        $question->categories()->attach($validateData['categories']);
+
         return redirect()->route('questions.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
-     * @return Response
+     * @param Question $question
+     * @return RedirectResponse
+     * @throws Exception
      */
-    public function destroy($id)
+    public function destroy(Question $question)
     {
-        $question = Question::find($id);
-        if ($question != null) {
-            $question->Delete();
-        }
+        $question->delete();
 
         return redirect()->route('questions.index');
     }

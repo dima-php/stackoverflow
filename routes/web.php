@@ -14,9 +14,9 @@ Route::get('questions/{question}', 'QuestionController@show')->name('questions.s
 
 Route::post('questions', 'QuestionController@store')->middleware('auth')->name('questions.store');
 Route::get('questions/{question}/edit', 'QuestionController@edit')->middleware('auth')->name('questions.edit');
-Route::post('questions/update', 'QuestionController@update')->middleware('auth')->name('questions.update');
-Route::get('questions/{question}/destroy', 'QuestionController@destroy')->middleware('auth')->name('questions.delete');
+Route::put('questions/{question}', 'QuestionController@update')->middleware('auth')->name('questions.update');
 Route::post('questions/{question}/answers', 'AnswerController@store')->middleware('auth')->name('answers.store');
+Route::delete('questions/{question}', 'QuestionController@destroy')->middleware('auth')->name('questions.delete');
 
 Auth::routes();
 
