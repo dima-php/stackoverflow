@@ -21,26 +21,13 @@ class AnswerController extends Controller
     public function store(StoreAnswerRequest $request, Question $question)
     {
         $validateData = $request->validated();
-
         $answer = new Answer(['body' => $validateData['body'], 'user_id' => Auth::id()]);
-
         $question->answers()->save($answer);
-
         $question->increment('answer_count');
 
         return back();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -49,9 +36,10 @@ class AnswerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreAnswerRequest $request, Answer $answer)
     {
-        //
+        $answer->update($request->validated());
+        return back();
     }
 
     /**
@@ -60,8 +48,11 @@ class AnswerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Answer $answer)
     {
-        //
+
+       $answer->delete();
+        $answer->question->decrement('answer_count');
+        return back();
     }
 }

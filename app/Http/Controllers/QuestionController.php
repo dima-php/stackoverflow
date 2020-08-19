@@ -98,11 +98,8 @@ class QuestionController extends Controller
         ]);
 
         $question->update($validateData);
-
         $question->categories()->detach();
-
         $question->categories()->attach($validateData['categories']);
-
         return redirect()->route('questions.index');
     }
 

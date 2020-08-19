@@ -66,6 +66,32 @@
                             <p>
                                 {{$answer->body}}
                             </p>
+                            <div class="dk-box_control">
+                                @if(\Illuminate\Support\Facades\Auth::user() != null)
+                                    @php
+                                        $user = \Illuminate\Support\Facades\Auth::user();
+                                        $answerUser = $user->answers;
+                                        $answerIds = $answerUser->pluck('id')->toArray();
+                                    @endphp
+                                    @if(in_array($answer->id, $answerIds))
+                                    @endif
+                                @endif
+
+                                <button type="button" data-id="{{$answer->id}}" class="btn btn-warning  dk-edit__link">Edit</button>
+                                <form action="{{route('answers.delete', $answer)}}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </div>
+                            <div class="my{{$answer->id}}" style="display:none;">
+                                <form action="{{route('answers.update', $answer)}}" method="post">
+                                    @method('put')
+                                    @csrf
+                                    <textarea type="text" name="body" class="form-control">{{$answer->body}}</textarea>
+                                    <button type="submit" class="btn btn-primary dk-button">Submit</button>
+                                </form>
+                            </div>
                             <div class="dk-data">
                                 {{$answer->created_at}}
                                 <div class="user-info">
@@ -89,7 +115,6 @@
                         <button type="submit" class="btn btn-outline-success my-2 my-sm-0 button-form">Post Your Answer
                         </button>
                     </form>
-
                 </div>
                 <div class="sidebar-nav">
                     <div class="item">
@@ -103,7 +128,17 @@
         </div>
     </div>
 @endsection
-
-
-
+@section('script')
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.dk-edit__link').click(function () {
+                let id = $(this).data('id');
+                $('.my'+ id).fadeIn('slow');
+            });
+            $('.dk-button').click(function () {
+                $('.my'+ id).fadeOut('slow');
+            });
+        });
+    </script>
+@endsection
 

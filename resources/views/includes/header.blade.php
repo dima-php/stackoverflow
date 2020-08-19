@@ -14,15 +14,15 @@
                                 <a class="nav-link" href="/">Home </a>
                             </li>
                             <li class="navbar-nav mr-auto">
-                                <a class="nav-link" href="http://lessons/questions">
+                                <a class="nav-link" href="{{url('/questions')}}">
                                     Questions
                                 </a>
                             </li>
                         </ul>
-
+                        <a href="{{url('/login')}}">login</a>
+                        <a href="{{url('/register')}}">register</a>
                         <form class="form-inline mt-2 mt-md-0">
-                            <a href="login">login</a>
-                            <a href="register">register</a>
+
                             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                         </form>

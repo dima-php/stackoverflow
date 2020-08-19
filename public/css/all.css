@@ -215,5 +215,6 @@ textarea {
 
 .dk-box_control {
     display: flex;
+    align-items: flex-start;
     justify-content: flex-end;
 }
