@@ -19,6 +19,8 @@ Route::post('questions/{question}/answers', 'AnswerController@store')->middlewar
 Route::put('answers/{answer}', 'AnswerController@update')->middleware('auth')->name('answers.update');
 Route::delete('answers/{answer}', 'AnswerController@destroy')->middleware('auth')->name('answers.delete');
 
+Route::get('categories/{category}', 'CategoryController@show')->name('categories.show');
+
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
