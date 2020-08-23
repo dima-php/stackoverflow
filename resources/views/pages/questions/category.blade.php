@@ -1,6 +1,8 @@
 @extends('layouts.app')
-@section('title', 'All Questions')
+@section('title', $category->title)
+
 @section('content')
+
     <div class="container-fluid dk-content">
         <div class="row">
             <div class="col-lg-2">
@@ -10,7 +12,7 @@
                 <div id="mainbar">
                     <div class="grid">
                         <h1 class="grid--cell fl1 fs-headline1">
-                            Questions
+                            {{ $category->title}}
                         </h1>
                         <div class="ml12 aside-cta grid--cell print:d-none">
                             <a href="{{route("questions.create")}}" class="btn btn-outline-success my-2 ">
@@ -47,7 +49,8 @@
                         </div>
                     </div>
                     <div class="container">
-                        @foreach($questions as $question)
+                        @foreach($category->questions as $question)
+
                             <div id="qlist-wrapper" class="flush-left">
                                 <div id="question-mini-list">
                                     <div>
@@ -79,9 +82,10 @@
                                                     <div class="dk-link-question"></div>
                                                 </h3>
                                                 <div class="wrap">
-                                                    <div class="tags t-php t-laravel t-eloquent t-eloquent--relationship">
+                                                    <div
+                                                        class="tags t-php t-laravel t-eloquent t-eloquent--relationship">
                                                         @foreach($question->categories as $category)
-                                                            <a href="#" class="post-tag" >{{$category->title}}</a>
+                                                            <a href="#" class="post-tag">{{$category->title}}</a>
                                                         @endforeach
                                                     </div>
                                                     <div class="started">
@@ -101,7 +105,7 @@
                                 </div>
                             </div>
                         @endforeach
-                        {{ $questions->links() }}
+                        {{--                        {{ $questions->links() }}--}}
                     </div>
                 </div>
             </div>
@@ -111,8 +115,3 @@
         </div>
     </div>
 @endsection
-
-
-
-
-

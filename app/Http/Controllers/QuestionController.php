@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Exception;
 use App\Models\Category;
 use App\Models\Question;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -31,11 +32,11 @@ class QuestionController extends Controller
      *
      * @return Application|Factory|Response|View
      */
-    public function create()
+    public function create(Question $question)
     {
         $categories = Category::all();
 
-        return view('pages.questions.create', ['categories' => $categories]);
+        return view('pages.questions.create', ['categories' => $categories, 'question' => $question]);
     }
 
     /**
@@ -46,15 +47,18 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
+
         $validateData = $request->validate([
             'title' => 'required',
             'body' => 'required',
-            'categories' => 'array',
+            'user_id' => [Auth::id()],
+            'categories' => 'array'
         ]);
 
         $question = Question::create($validateData);
 
         $question->categories()->attach($request->categories);
+
 
         return redirect()->route('questions.index');
     }
@@ -85,7 +89,7 @@ class QuestionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request  $request
+     * @param Request $request
      * @param Question $question
      * @return RedirectResponse
      */

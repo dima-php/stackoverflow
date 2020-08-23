@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', ' Update Question')
 @section('content')
     <div class="container">
         <div class="dk-question-form">
@@ -15,14 +15,8 @@
                     <textarea name="body" class="form-control" placeholder="Text">{{$question->body}}</textarea>
                 </div>
                 <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">Options</label>
-                    </div>
-                    {{--                    <select class="custom-select" multiple name="categories[]">--}}
-                    {{--                        @foreach($categories as $category)--}}
-                    {{--                            <option value="{{$category->id}}" @if(in_array($category->id, $question->categories->pluck('id')->toArray())) selected @endif>{{$category->title}}</option>--}}
-                    {{--                        @endforeach--}}
-                    {{--                    </select>--}}
+
+
                     @foreach($categories as $category)
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" name="categories[]"

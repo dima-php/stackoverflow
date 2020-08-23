@@ -1,5 +1,5 @@
 @extends('layouts.app')
-<title>{{$question->title}}</title>
+@section('title', $question->title)
 @section('content')
     <div class="container-fluid">
         <div class="row show-content">

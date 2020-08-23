@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Question;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -47,9 +48,8 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //dd($category->questions);
-        // add pagination
-        // add view
+        $questions = Question::with(['categories', 'questions', 'category_question']);
+        return view('pages.questions.category', ['questions' => $questions, 'category' => $category]);
     }
 
     /**

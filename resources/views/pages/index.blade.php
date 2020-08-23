@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', ' Top Questions')
 @section('content')
 <div class="container-fluid dk-content">
     <div class="row">

@@ -18,7 +18,6 @@ Route::delete('questions/{question}', 'QuestionController@destroy')->middleware(
 Route::post('questions/{question}/answers', 'AnswerController@store')->middleware('auth')->name('answers.store');
 Route::put('answers/{answer}', 'AnswerController@update')->middleware('auth')->name('answers.update');
 Route::delete('answers/{answer}', 'AnswerController@destroy')->middleware('auth')->name('answers.delete');
-
 Route::get('categories/{category}', 'CategoryController@show')->name('categories.show');
 
 Auth::routes();

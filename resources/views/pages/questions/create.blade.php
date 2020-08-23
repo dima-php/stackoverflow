@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Ask a Question')
 @section('content')
     <div class="container mt-5">
         <div class="row">
@@ -24,14 +25,17 @@
                         <textarea name="body"  class="form-control" placeholder="Text"></textarea>
                     </div>
                     <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text" for="inputGroupSelect01">Options</label>
-                        </div>
-                        <select class="custom-select" multiple name="categories[]">
-                          @foreach($categories as $category)
-                            <option value="{{$category->id}}">{{$category->title}}</option>
-                         @endforeach
-                        </select>
+
+
+                        @foreach($categories as $category)
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" name="categories[]"
+                                       id="test_{{$category->id}}" value="{{$category->id}}"
+                                       @if(in_array($category->id, $question->categories->pluck('id')->toArray())) checked @endif>
+                                <label class="custom-control-label"
+                                       for="test_{{$category->id}}">{{$category->title}}</label>
+                            </div>
+                        @endforeach
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
